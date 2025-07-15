@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block titulo %}Añadir administrador{% endblock %}
+{% import "base.html" as macros %}
+{% block contenido%}
+  
+{#Esta pagina muestra la informacion guardada del administrador antes de ser actualizada#}
+<form action="{{url_for('actualizar_admin')}}" method="post" class="form-main">
+    <h1 class="form-title">Administradores</h1>
+    <div class="form-group">
+      <input type="text" name="id_admin" id="id_admin" class="form-control"  value="{{admin_info[0]}}" hidden>
+        <label for="nombre" class="label-form">Nombre administrador</label>
+        <input type="text" name="nombre" id="nombre" class="form-control"  value="{{admin_info[1]}}" required>
+
+        <label for="user" class="label-form">User name</label>
+        <input type="text" name="user" id="user" class="form-control" value="{{admin_info[2]}}" required>
+
+        <label for="password" class="label-form">
+          Asignar nueva contraseña<input type="checkbox" id="toggleInputs">
+        </label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Asignar contraseña" disabled required>
+
+        <label for="rol_admin" class="label-form">Rol de administrador</label>
+        <select name="rol_admin" id="rol_admin" class="form-control" required>
+            {% for rol in roles%}
+            <option value="{{rol[0]}} ">{{rol[0]}} - {{rol[1]}}</option>
+            {%endfor%}
+        </select>
+
+        <button type="submit" class="btn-update" title="Aceptar" >Actualizar</button>
+    </div>
+</form>
+
+
+<!---------------->
+{#Script para habilitar una nueva contraseña#}
+<script>
+  const checkbox = document.getElementById('toggleInputs');
+  const inputs = document.querySelectorAll('#password', );
+
+  checkbox.addEventListener('change', () => {
+    inputs.forEach(input => {
+      input.disabled = !checkbox.checked;
+    });
+  });
+</script>
+
+<!---------------->
+{% endblock %}

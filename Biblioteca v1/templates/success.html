@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+
+{% block titulo %}Exito{% endblock %}
+{% block contenido%}
+{#Pagina mostrada cuando se ejecuta alguna accion con exito#}
+<div class="main-content">
+    {%if msg_prestamo%}
+    <img src="{{url_for('static', filename='prestamo.svg')}}" alt="img" srcset="">
+    <h1>Exito</h1>
+    <p>{{msg_prestamo}}</p>
+    {% endif %}
+    
+    {%if devolucion_msg%}
+    <img src="{{url_for('static', filename='book_back.svg')}}" alt="img" srcset="">
+    <h1>Exito</h1>
+    <p>{{devolucion_msg}}</p>
+    {% endif %}
+
+    {%if success%}
+    <img src="{{url_for('static', filename='check.svg')}}" alt="img" srcset="">
+    <h1>Exito</h1>
+    <p>{{success}}</p>
+    {% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block titulo %}{{usuario}} - Información{% endblock %}
+
+
+{% block contenido %}
+
+{#Mostrar los detalles de cada administrador#}
+<div class="info-usuario">
+    {% if rol == 1 %}
+    <img src="{{url_for('static', filename='superadmin.svg')}}" alt="" srcset="" class="profile-picture-section" >
+    {% elif rol == 2 %}
+    <img src="{{url_for('static', filename='admin.svg')}}" alt="" srcset="" class="profile-picture-section" >
+    {% elif rol == 3 %}
+    <img src="{{url_for('static', filename='viewer.svg')}}" alt="" srcset="" class="profile-picture-section" >
+    {% endif %}
+    <label name="nombre" class="nombre-perfil">{{detalles[1]}}</label>
+    <label name="rol" class="rol-perfil">{{detalles[3]}}</label>
+    <a href="{{url_for('perfil_usuario_editar', admin=usuario)}}" class="btn">Editar perfil</a>
+
+</div>
+
+
+
+{% endblock %}

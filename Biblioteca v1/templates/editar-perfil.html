@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{#INCLUIR EL CONTENIDO DE BASE.HTML (NAVBAR)#}
+{% extends 'base.html' %}
+{#REUTILIZANDO BLOQUES CON JINJA2#}
+{% block titulo %}{{usuario}} - Información{% endblock %}
+{% block contenido %}
+
+<form action="{{url_for('actualizar_admin_info')}}" method="post" class="">
+    <div class="info-usuario">
+        {% if rol == 1 %}
+        <img src="{{url_for('static', filename='superadmin.svg')}}" alt="" srcset="" class="profile-picture-section" >
+        {% elif rol == 2 %}
+        <img src="{{url_for('static', filename='admin.svg')}}" alt="" srcset="" class="profile-picture-section" >
+        {% elif rol == 3 %}
+        <img src="{{url_for('static', filename='viewer.svg')}}" alt="" srcset="" class="profile-picture-section" >
+        {% endif %}
+        <label for="nombre" class="nombre-editar">Nombre</label>
+        <input type="text" class="input-editar" name="nombre_editar" id="nombre" value="{{detalles[1]}}" >
+
+        <label for="usuario" class="nombre-editar">Username</label>
+        <input type="text" name="usuario_editar" id="usuario" value="{{detalles[2]}}" class="input-editar" >
+
+        <input type="text" class="input-editar" name="id_admin" id="id_admin" value="{{detalles[0]}}" hidden >
+        <button type="submit" class="btn-update" title="Guardar cambios" >Guardar cambios</button>
+    </div>
+
+</form>
+{% endblock %}

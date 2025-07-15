@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+
+{% block titulo %}Biblioteca{% endblock %}
+
+{% block contenido%}
+<div class="main-content">
+    <img src="{{url_for('static', filename='read.svg')}}" alt="img" srcset="">
+    <h1>Bienvenido a la biblioteca <strong>{{usuario}}</strong></h1>
+    <p>Utilice el menú de navegación para gestionar libros, usuarios y prestamos</p>
+</div>
+
+{% endblock %}
+

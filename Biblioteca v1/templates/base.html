@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.svg')}}" type="image/x-icon">
+
+    <title>
+        {% block titulo%}
+    {% endblock%}</title>
+</head>
+<body>
+
+    <div class="profile">
+        <div class="profile-items">
+            {#Dependiendo del rol de administrado, una imagen de perfil sera mostrada#}
+            {% if rol == 1 %}
+            <img src="{{url_for('static', filename='superadmin.svg')}}" alt="" srcset="" class="profile-picture">
+            {% elif rol == 2 %}
+            <img src="{{url_for('static', filename='admin.svg')}}" alt="" srcset="" class="profile-picture">
+            {% elif rol == 3 %}
+            <img src="{{url_for('static', filename='viewer.svg')}}" alt="" srcset="" class="profile-picture">
+            {% endif %}
+            <a href="{{url_for('perfil_usuario', admin=usuario)}}" class="nav-menu">{{usuario}}</a>
+        </div>
+    </div>
+
+    
+    <div class="container-nav">
+        <div class="branding">
+            <img src="{{url_for('static', filename='books.svg')}}" alt="img" srcset="" class="logo">
+            <a href="{{url_for('index')}}"><h1>Biblioteca</h1></a>
+        </div>
+        <nav>
+            <ul>
+    
+                <li><a href="{{url_for('manejar_libros')}}" class="nav-menu">Libros</a></li>
+                <li><a href="{{url_for('manejar_usuarios')}}" class="nav-menu">Usuarios</a></li>
+                <li><a href="{{url_for('gestionar_prestamos')}}" class="nav-menu">Prestamos</a></li>
+                {% if rol == 1%}{#Acceso solo para super-admin#}
+                <li><a href="{{url_for('add_admin')}}" class="nav-menu">Admin</a></li>
+                {%endif%}
+                <li><a href="{{url_for('logout')}}" class="logout">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+
+
+
+    {% block contenido%}
+    
+    {% endblock %}
+
+
+    <footer class="page-footer">
+        <p>Biblioteca &copy; 2025</p>
+    </footer>
+
+
+
+{#MACRO PARA BORRAR Y EDITAR (USUARIOS Y LIBROS) PARA SUPERADMIN Y ADMIN - Build with ChatGPT#}
+<!---->
+{% macro form_button(action_endpoint, field_name, field_value, icon_filename,tooltip_title, url_params={}) %}
+<form action="{{ url_for(action_endpoint, **url_params) }}" method="post">
+    <input type="text" name="{{ field_name }}" value="{{ field_value }}" readonly hidden>
+    <button type="submit" class="btn-table" title="{{ tooltip_title }}">
+        <img src="{{ url_for('static', filename=icon_filename) }}" alt="{{ tooltip_title }}" width="20px">
+    </button>
+</form>
+{% endmacro %}
+
+{#MACRO PARA MOSTRAR INFORMACION DEL ADMINISTRADOR EN DETALLES DEL PERFIL#}
+{% macro perfil_usuario(rol, nombre, id_admin, admin_user,rol_admin) %}
+<img src="{{ url_for('static', filename=rol) }}" alt="" width="250px">
+<p>{{nombre}}</p>
+<p>{{id_admin}}</p>
+<p>{{admin_user}}</p>
+<p>{{rol_admin}}</p>
+{% endmacro %}
+
+{#CAMPO DE BUSCAR LIBRO O USUARIOS EN LAS TABLAS#}
+{% macro buscar_filtro(funcion, endpoint, placeholder)%}
+<form action="{{url_for(funcion)}}" method="get" class="buscador">
+    <input type="text" name="busqueda" class="form-input" placeholder="{{placeholder}}" required>
+    <input type="submit" value="Buscar" class="btn">
+    <a href="{{url_for(endpoint)}}" class="nav-menu">Cancelar</a>
+</form>
+{% endmacro %}
+
+
+</body>
+</html>

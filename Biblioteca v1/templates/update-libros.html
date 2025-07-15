@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block titulo %}Actualizar{% endblock %}
+
+{% block contenido%}
+
+{#Esta pagina muestra la informacion guardada de los libros antes de ser actualizada#}
+    <form action="{{url_for('actualizar_libro')}}" method="post" class="form-main">
+        <h1 class="form-title">Libros</h1>
+        <div class="form-group">
+            
+            <label for="titulo" class="label-form">Titulo</label>
+            <input type="text" name="titulo" id="titulo" class="form-control" value="{{libro_data[1]}}" placeholder="Titulo del libro" required>
+
+            <label for="autor" class="label-form">Autor</label>
+            <input type="text" name="autor" id="autor" class="form-control" value="{{libro_data[2]}}" placeholder="Autor del libro" required>
+
+            <label for="isbn" class="label-form">ISBN</label>
+            <input type="text" name="isbn" id="isbn" class="form-control" value="{{libro_data[0]}}" placeholder="ISBN del libro" readonly>
+
+            <label for="editorial" class="label-form">Editorial</label>
+            <input type="text" name="editorial" id="editorial" class="form-control" value="{{libro_data[3]}}" placeholder="Editorial" required>
+
+            <label for="año" class="label-form">Año de publicación</label>
+            <input type="number" name="año" id="año" class="form-control" value="{{libro_data[4]}}"  placeholder="Año de publicación" required>
+            <button type="submit" class="btn-update" title="Actualizar libro" >Actualizar libro</button>
+        </div>
+    </form>
+    
+
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% import "base.html" as macros %}
+{% block titulo %}Usuarios{% endblock %}
+
+{%block contenido%}
+{%if rol == 1 or rol == 2%}
+    <form action="{{url_for('manejar_usuarios')}}" method="post"  class="form-main">
+        <h1>Usuario</h1> <br>
+        <div class="form-group">
+            <label for="nombre">Nombre de usuario</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del usuario" minlength="5" maxlength="70" required>
+            <label for="edad_usuario">Edad</label>
+            <input type="number" name="edad_usuario" id="edad_usuario" class="form-control" placeholder="Edad del usuario" min="10" max="99" required>
+            <label for="phone_usuario">Tel&#233;fono</label>{#Teléfono#}
+            <input type="number" name="phone_usuario" id="phone_usuario" class="form-control" placeholder="Telefono del usuario" maxlength="12" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="70" required>
+            <button type="submit" class="btn">Agregar usuario</button>
+        </div>
+    </form>
+  {%endif%}
+  
+    <div class="table-container">
+      {{macros.buscar_filtro('buscar_usuarios', 'manejar_usuarios', 'Buscar usuario')}}
+        <table>
+          <thead>
+            <tr>
+              <th>ID de usuario</th>
+              <th>Nombre de usuario</th>
+              <th>Email</th>
+              {%if rol == 1 or rol == 2%}
+              <th>Opciones</th>
+              {%endif%}
+            </tr>
+          </thead>
+          <tbody>
+            {% for usuario in usuarios%}
+            <tr>
+                <td >{{usuario[0]}}</td>
+                <td >{{usuario[1]}}</td>
+                <td >{{usuario[4]}}</td>
+                {%if rol == 1 %}
+                <td class="super-admin-op">
+                   {#Borrar usuario#}
+                  {{macros.form_button('borrar_usuarios', 'id_usuario', usuario[0], 'delete.svg', 'Borrar información usuario', {'tabla': 'usuarios'})}}                  
+                  {#Editar usuario#}
+                  {{macros.form_button('editar_usuario', 'id_usuario', usuario[0], 'edit.svg', 'Editar información usuario', {'tabla': 'usuarios'})}}          
+
+                  {%elif rol == 2%}
+                  <td>
+                    {#Editar usuario#}
+                    {{macros.form_button('editar_usuario', 'id_usuario', usuario[0], 'edit.svg', 'Editar información usuario', {'tabla': 'usuarios'})}} 
+                  </td>
+                </td>
+                {%endif%}
+                {%endfor%}
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    
+{% endblock %}

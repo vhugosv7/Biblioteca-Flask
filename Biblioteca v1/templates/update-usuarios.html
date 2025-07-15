@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% import "base.html" as macros %}
+{% block titulo %}Usuarios{% endblock %}
+
+{%block contenido%}
+{#Formulario para actualizar la informacion del usuario seleccionado#}
+{%if rol == 1 or rol == 2%}
+    <form action="{{url_for('editar_usuario_db')}}" method="post"  class="form-main">
+        <h1>Usuario</h1> <br>
+        <div class="form-group">
+          <input type="text" name="id_usuario" id="id_usuario" value="{{info_usuario[0]}}" class="form-control"  hidden>
+            <label for="nombre">Nombre de usuario</label>
+            <input type="text" name="nombre" id="nombre" value="{{info_usuario[1]}}" class="form-control" placeholder="Nombre del usuario" required>
+            <label for="edad_usuario">Edad</label>
+            <input type="number" name="edad_usuario" id="edad_usuario" value="{{info_usuario[2]}}" class="form-control" placeholder="Edad del usuario" required>
+            <label for="phone_usuario">Tel&#233;fono</label>{#Teléfono#}
+            <input type="number" name="phone_usuario" id="phone_usuario" value="{{info_usuario[3]}}" class="form-control" placeholder="Telefono del usuario" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{info_usuario[4]}}" placeholder="Email" required>
+            <button type="submit" class="btn-update">Actualizar usuario</button>
+        </div>
+    </form>
+  {%endif%}
+  
+
+    
+{% endblock %}

@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+}
+/*For index template*/
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,h2{
+    color: #05473B;
+}
+
+.container-nav{
+    display: flex;
+    align-items: center;
+    background-color: #F8F8F8;
+    padding: 1rem;
+}
+
+.page-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #05473B;
+    text-align: center;
+    background-color: #F8F8F8;
+    padding: 2rem;
+}
+
+.logo{
+    width: 5%;
+}
+.container-nav .branding{
+    margin-right: auto;
+    align-items: center;
+    gap: 7px;
+}
+.branding{
+    display: flex;
+    flex-flow: row;
+}
+nav ul{
+    display: flex;
+    gap: 4rem;
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+
+ul li{
+    list-style: none;
+
+}
+
+.nav-menu{
+    text-decoration: none;
+    color: #05473B;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+a{
+    text-decoration: none;
+}
+.nav-menu:hover{
+    color: #05473bce;
+    text-shadow: #70B77E 1px 0 10px;
+}
+.logout{
+    color: rgb(196, 10, 10);
+    transition: background-color 0.7s, color 0.7s;
+}
+.logout:hover{
+    color: #d04444;
+    text-shadow: #e643437f 1px 0 10px;
+}
+
+.profile{
+    
+    background-color: #F8F8F8;
+}
+
+.profile-items{
+    display: flex;
+    align-items: center;
+    width: 140px;
+    padding: 5px;
+    margin-left: auto;
+    gap: 10px;
+}
+.profile-name{
+    color:  #05473B;
+    
+}
+.profile-picture{
+    width: 20%;
+    border-radius: 20px;
+}
+
+.profile-name:hover{
+    text-shadow: 1px 1px #70B77E;
+}
+.profile-items:hover{
+    box-shadow: rgba(5, 71, 59, 1) 0px 1px 4px,  rgba(5, 71, 59, 1)0px 0px 0px 3px;
+    cursor: pointer;
+}
+
+.main-content{
+    text-align: center;
+    margin: 30px auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.main-content img{
+    width: 25%;
+    transition: width 2s;
+}
+
+.main-content img:hover{
+    width: 20%;
+    
+}
+
+/*BOOKS HTML TEMPLATE*/
+
+.form-main{
+    margin: 15px auto;
+    display: flex;
+    flex-flow: column;
+    background-color: #05473b1e;
+    border: 1px solid #555555;
+    border-radius: 7px;
+    width: 30rem;
+    padding: 10px;
+    align-items: center;
+}
+
+.form-group{
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    margin: 10px;
+}
+
+.form-control{
+    border: 1px solid #bfbfbf;
+    width: 350px;
+    padding: 7px;
+    flex: 0 0 auto; 
+}
+
+.form-title{
+    color: rgb(26, 25, 25);
+}
+
+.label-form{
+    color: #131413;
+}
+.btn{
+    margin: 5px;
+    padding: 10px;
+    background-color: #065143;
+    color: #ffff;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+
+.btn:hover{
+    background-color: #70B77E;
+    color: #28190E;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+/*FOR UPDATE FORMS*/
+.btn-update{
+    margin: 5px;
+    padding: 10px;
+    background-color: #F0EA51;
+    color: #434242;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btn-update:hover{
+    background-color: #eae436;
+    color: #28190E;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+
+.lista-libros{
+   display: flex;
+   flex-flow: column;
+   height: 90%;
+   background-color: #70B77E;
+   overflow:auto;  
+   justify-content: center;
+   
+}
+
+.lista-libros h2{
+    margin: 5px 0 5px 0;
+}
+
+/*FOR TABLES*/
+.table-container {
+    overflow-y: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 95px;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #065143;
+    color: #ffff;
+    z-index: 1; 
+  }
+
+  .super-admin-op{
+    display: flex;
+    justify-content:space-around;
+  }
+
+  .btn-table{
+    transition: background-color 0.7s, color 0.7s;
+  }
+  .btn-table:hover{
+    background-color: #70B77E;
+    cursor: pointer;
+  }
+
+  /*LOGIN STYLES*/
+
+.display{
+    display: flex;
+    justify-content: center;
+    margin: 10% auto;
+    gap: 7%;
+  }
+
+.login-h1{
+    color: #065143;
+  }
+
+.logo-login{
+    width: 30%;
+
+    
+  }
+
+.login-form{
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+   
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+  }
+
+.form-input{
+    border: 1px solid #bfbfbf;
+    width: 300px;
+    padding: 7px;
+    flex: 0 0 auto;
+}
+
+.warning{
+    background-color: #f6bebe;
+    width: 50%;
+    color: #5b0303;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*PROFILE DETAILS*/
+.info-usuario{
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 7px;
+    width: 25rem;
+    height: 30rem;
+    align-items: center;
+    margin: 2rem auto;
+}
+
+.profile-picture-section{
+    margin: 15px;
+    width: 200px;
+    transition: width 0.5s;
+}
+
+.nombre-editar{
+    color: #434242;
+    font-size: 20px;
+}
+.input-editar{
+    padding: 7px;
+    text-align: center;
+    border: 1px solid #848282;
+}
+
+.profile-picture-section:hover{
+    width: 210px;
+}
+
+.nombre-perfil{
+    color: #434242;
+    font-size: 30px;
+}
+
+.rol-perfil{
+    text-transform: capitalize;
+    font-size: 20px;
+    color: #787777;
+}
+/*Buscador*/
+.buscador{
+    margin-top: 20px;
+
+}
