@@ -12,11 +12,10 @@ from sqldeploy import connect_db, actualizar_libro_db, actualizar_usuario, \
 app = Flask(__name__)
 
 
-#  ***** TESTEAR SISTEMA 10% ✔
-#  Evitar sesiones largas
+
+#  Evitar sesiones largas y eliminar sesion cuando el sistema es recargado
 app.secret_key = os.urandom(24)
-# app.secret_key = 'Q2Mñ?*m9fhKJFacoc'
-# app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_PERMANENT'] = False
 allowed_rol = [1, 2]  # superadmin and admin roles
 
 
