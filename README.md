@@ -1,5 +1,5 @@
 # Biblioteca-Flask
-Sistema de biblioteca desarrollado en Flask para gestionar prestamos, añadir usuarios, libros asi como tambien gestionar el acceso a administradores.<br>
+Sistema de biblioteca desarrollado en Flask para gestionar prestamos, añadir usuarios, libros asi como tambien gestionar el acceso a administradores.<br> <br>
 Visitar aqui: https://biblioteca-flask-rqgj.onrender.com
 ## Pantalla principal
 <img width="1615" height="730" alt="image" src="https://github.com/user-attachments/assets/f4067260-4ba7-4e7f-ad00-f72d241d7a47" />
