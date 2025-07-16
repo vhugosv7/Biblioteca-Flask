@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 
 
-#  Evitar sesiones largas y eliminar sesion cuando el sistema es recargado
+#  Evitar sesiones largas y eliminar sesion cuando el sistema es reiniciado
 app.secret_key = os.urandom(24)
 app.config['SESSION_PERMANENT'] = False
 allowed_rol = [1, 2]  # superadmin and admin roles
